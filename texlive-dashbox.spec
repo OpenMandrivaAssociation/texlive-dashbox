@@ -1,3 +1,9 @@
+# revision 23425
+# category Package
+# catalog-ctan /macros/latex/contrib/dashbox
+# catalog-date 2011-08-05 01:24:20 +0200
+# catalog-license lppl
+# catalog-version 1.14
 Name:		texlive-dashbox
 Version:	1.14
 Release:	1
@@ -42,6 +48,7 @@ illusion of) vertical stacks of boxes.
 #- source
 %doc %{_texmfdistdir}/source/latex/dashbox/dashbox.dtx
 %doc %{_texmfdistdir}/source/latex/dashbox/dashbox.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -52,3 +59,5 @@ illusion of) vertical stacks of boxes.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
