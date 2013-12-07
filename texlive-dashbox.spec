@@ -6,7 +6,7 @@
 # catalog-version 1.14
 Name:		texlive-dashbox
 Version:	1.14
-Release:	4
+Release:	5
 Summary:	Draw dashed boxes
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/dashbox
