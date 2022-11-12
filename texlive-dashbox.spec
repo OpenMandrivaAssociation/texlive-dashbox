@@ -1,19 +1,13 @@
-# revision 23425
-# category Package
-# catalog-ctan /macros/latex/contrib/dashbox
-# catalog-date 2011-08-05 01:24:20 +0200
-# catalog-license lppl
-# catalog-version 1.14
 Name:		texlive-dashbox
-Version:	1.14
-Release:	11
+Version:	23425
+Release:	1
 Summary:	Draw dashed boxes
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/dashbox
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ The package can draw boxes that perform like \framebox or
 illusion of) vertical stacks of boxes.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -42,24 +36,11 @@ illusion of) vertical stacks of boxes.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.14-2
-+ Revision: 750763
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.14-1
-+ Revision: 718200
-- texlive-dashbox
-- texlive-dashbox
-- texlive-dashbox
-- texlive-dashbox
-
