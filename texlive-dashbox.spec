@@ -3,7 +3,7 @@ Version:	23425
 Release:	2
 Summary:	Draw dashed boxes
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/dashbox
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/dashbox
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.doc.r%{version}.tar.xz
