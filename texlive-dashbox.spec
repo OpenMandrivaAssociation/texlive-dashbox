@@ -1,46 +1,25 @@
-Name:		texlive-dashbox
-Version:	23425
-Release:	2
+%global tl_name dashbox
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.14
+Release:	%{tl_revision}.1
 Summary:	Draw dashed boxes
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/dashbox
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.source.r%{version}.tar.xz
+License:	lppl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/dashbox.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package can draw boxes that perform like \framebox or
-\fbox, but use dashed lines. The package can also draw (an
-illusion of) vertical stacks of boxes.
+The package can draw boxes that perform like \framebox or \fbox, but use
+dashed lines. The package can also draw (an illusion of) vertical stacks
+of boxes.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/dashbox/dashbox.sty
-%doc %{_texmfdistdir}/doc/latex/dashbox/dashbox.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/dashbox/dashbox.dtx
-%doc %{_texmfdistdir}/source/latex/dashbox/dashbox.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
